@@ -1,42 +1,44 @@
 import os
 import speech_recognition as sr
 from dotenv import load_dotenv
+from entrances import entrances
 
 class voice_recognition:
-
+    
+    
     def listen_portuguese(self):
-        self.recognizer = sr.Recognizer()
+        recognize = sr.Recognizer()
         with sr.Microphone() as source:
-            print('Diga algo!')
-            self.recognizer.adjust_for_ambient_noise(source)
-            self.entrance = self.recognizer.listen(source)
-            portuguese_entrance = self.recognizer.recognize_google(self.entrance,language='pt-BR')
-            print(portuguese_entrance)
+            print('Diga Algo!')
+            recognize.adjust_for_ambient_noise(source)
+            entrance = recognize.listen(source)
+            portuguese_entrance = recognize.recognize_google(entrance,language='pt-BR')
+            entrance = entrances()
+            entrance.portuguese_return_for_entrance(portuguese_entrance)
 
     def listen_english(self):
-        self.recognizer = sr.Recognizer()
+        recognize = sr.Recognizer()
         with sr.Microphone() as source:
             print('Say Something!')
-            self.recognizer.adjust_for_ambient_noise(source)
-            self.entrance = self.recognizer.listen(source)
-            portuguese_entrance = self.recognizer.recognize_google(self.entrance,language='en-US')
-            print(portuguese_entrance)
+            recognize.adjust_for_ambient_noise(source)
+            entrance = recognize.listen(source)
+            english_entrance = recognize.recognize_google(entrance,language='en-US')
+            print(english_entrance)
 
     def listen_spanish(self):
-        self.recognizer = sr.Recognizer()
+        recognize = sr.Recognizer()
         with sr.Microphone() as source:
-            print('Diga algo!')
-            self.recognizer.adjust_for_ambient_noise(source)
-            self.entrance = self.recognizer.listen(source)
-            spanish_entrance = self.recognizer.recognize_google(self.entrance,language='es-ES')
+            print('Di Algo!')
+            recognize.adjust_for_ambient_noise(source)
+            entrance = recognize.listen(source)
+            spanish_entrance = recognize.recognize_google(entrance,language='es-ES')
             print(spanish_entrance)
 
 
     def main(self):
-        os.environ['LANGUAGE'] = 'en-US'
+        os.environ['LANGUAGE'] = 'pt-BR'
         load_dotenv('./program.env')
         LANGUAGE = os.getenv('LANGUAGE')
-        print(LANGUAGE)
 
         if LANGUAGE == 'pt-BR':
             self.listen_portuguese()
