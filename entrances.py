@@ -7,4 +7,6 @@ class entrances:
         if entrance == 'Oi' or entrance == 'oi':
             response = Response()
             response.response('Olá eu sou o J.O.R.G.E, seu assistente Virtual')
+    
+
         
